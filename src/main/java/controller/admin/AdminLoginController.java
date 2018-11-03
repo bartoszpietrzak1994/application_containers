@@ -5,19 +5,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/admin")
+//@RequestMapping("/admin/")
 public class AdminLoginController
 {
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/login", method = RequestMethod.GET)
     public String loginForm()
     {
-        return "login";
+        return "static/html/admin_index";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/login", method = RequestMethod.POST)
     public String login()
     {
-
-        return "welcome";
+        return "static/html/welcome";
     }
 }

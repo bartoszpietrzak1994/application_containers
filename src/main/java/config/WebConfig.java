@@ -30,21 +30,9 @@ public class WebConfig implements WebMvcConfigurer
     }
 
     @Bean
-    public ViewResolver internalResourceViewResolver() {
-        InternalResourceViewResolver bean = new InternalResourceViewResolver();
-        bean.setPrefix("");
-        bean.setSuffix(".html");
-        return bean;
-    }
-
-    @Bean
     public LocaleResolver localeResolver()
     {
         return new CookieLocaleResolver();
-    }
-
-    public void addResourceHandlers(final ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/static/**").addResourceLocations("/WEB-INF/static/");
     }
 
     public void addInterceptors(InterceptorRegistry registry)
@@ -52,5 +40,17 @@ public class WebConfig implements WebMvcConfigurer
         LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
         localeChangeInterceptor.setParamName("lang");
         registry.addInterceptor(localeChangeInterceptor);
+    }
+
+    @Bean
+    public ViewResolver internalResourceViewResolver() {
+        InternalResourceViewResolver bean = new InternalResourceViewResolver();
+        bean.setPrefix("");
+        bean.setSuffix(".html");
+        return bean;
+    }
+
+    public void addResourceHandlers(final ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/static/**").addResourceLocations("/WEB-INF/static/");
     }
 }

@@ -1,4 +1,4 @@
-package main.java.controller.admin;
+package main.java.controller.auth.admin;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

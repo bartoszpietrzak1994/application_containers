@@ -1,4 +1,4 @@
-package main.java.controller.customer;
+package main.java.controller.auth.customer;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,11 +11,5 @@ public class CustomerLoginController
     public String loginForm()
     {
         return "static/html/login";
-    }
-
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login()
-    {
-        return "static/html/welcome";
     }
 }

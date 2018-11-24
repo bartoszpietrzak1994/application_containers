@@ -3,7 +3,9 @@ package main.java.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -16,7 +18,8 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"main.java.controller"})
+@ComponentScan(basePackages = {"main.java.controller", "main.java.registration", "main.java.repository"})
+@Import({SecurityConfiguration.class, DatabaseConfig.class})
 public class WebConfig implements WebMvcConfigurer
 {
     @Bean("messageSource")
@@ -43,14 +46,22 @@ public class WebConfig implements WebMvcConfigurer
     }
 
     @Bean
-    public ViewResolver internalResourceViewResolver() {
+    public ViewResolver internalResourceViewResolver()
+    {
         InternalResourceViewResolver bean = new InternalResourceViewResolver();
         bean.setPrefix("");
         bean.setSuffix(".html");
         return bean;
     }
 
-    public void addResourceHandlers(final ResourceHandlerRegistry registry) {
+    @Bean
+    public BCryptPasswordEncoder bCryptPasswordEncoder()
+    {
+        return new BCryptPasswordEncoder();
+    }
+
+    public void addResourceHandlers(final ResourceHandlerRegistry registry)
+    {
         registry.addResourceHandler("/static/**").addResourceLocations("/WEB-INF/static/");
     }
 }

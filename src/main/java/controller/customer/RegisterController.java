@@ -16,6 +16,6 @@ public class RegisterController
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String register()
     {
-        return "static/html/welcome";
+        return "static/html/login";
     }
 }

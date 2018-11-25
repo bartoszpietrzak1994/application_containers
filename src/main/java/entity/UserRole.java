@@ -1,6 +1,8 @@
 package main.java.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "user_roles")
@@ -13,6 +15,9 @@ public class UserRole
 
     @Column(name = "role_name")
     private String roleName;
+
+    @ManyToMany
+    private Set<User> usersRoles = new HashSet<>();
 
     public Long getId()
     {

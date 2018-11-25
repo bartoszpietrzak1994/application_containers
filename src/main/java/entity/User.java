@@ -1,6 +1,7 @@
 package main.java.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -18,12 +19,13 @@ public class User
     @Column(name = "email")
     private String email;
 
-    @ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
-    @JoinTable(name="user_roles",
-            joinColumns = {@JoinColumn(name="user_id", referencedColumnName="id")},
-            inverseJoinColumns = {@JoinColumn(name="role_id", referencedColumnName="id")}
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "user_user_roles",
+            joinColumns = { @JoinColumn(name = "user_id") },
+            inverseJoinColumns = { @JoinColumn(name = "role_id") }
     )
-    private Set<UserRole> userRoles;
+    private Set<UserRole> userRoles = new HashSet<>();
 
     public Long getId()
     {

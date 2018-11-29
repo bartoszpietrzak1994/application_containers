@@ -3,6 +3,7 @@ package main.java.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -22,6 +23,7 @@ import java.util.Properties;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "main.java.repository")
+@PropertySource({"classpath:application.properties"})
 public class DatabaseConfig implements WebMvcConfigurer
 {
     private Environment environment;
@@ -50,10 +52,10 @@ public class DatabaseConfig implements WebMvcConfigurer
     public DataSource dataSource()
     {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/application_containers?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
-        dataSource.setUsername("root");
-        dataSource.setPassword("pass");
+        dataSource.setDriverClassName(environment.getProperty("jpa.driverClassName"));
+        dataSource.setUrl(environment.getProperty("jpa.url"));
+        dataSource.setUsername(environment.getProperty("jpa.user"));
+        dataSource.setPassword(environment.getProperty("jpa.password"));
         return dataSource;
     }
 
@@ -75,8 +77,8 @@ public class DatabaseConfig implements WebMvcConfigurer
     private Properties additionalProperties()
     {
         Properties properties = new Properties();
-        properties.setProperty("hibernate.hbm2ddl.auto", "create");
-        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
+        properties.setProperty("hibernate.hbm2ddl.auto", environment.getProperty("hibernate.hbm2ddl.auto"));
+        properties.setProperty("hibernate.dialect", environment.getProperty("hibernate.dialect"));
 
         return properties;
     }

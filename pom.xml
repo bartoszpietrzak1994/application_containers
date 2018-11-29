@@ -112,6 +112,13 @@
             <scope>test</scope>
         </dependency>
 
+        <!--thymeleaf-->
+        <dependency>
+            <groupId>org.thymeleaf</groupId>
+            <artifactId>thymeleaf-spring5</artifactId>
+            <version>3.0.9.RELEASE</version>
+        </dependency>
+
         <!--other-->
         <dependency>
             <groupId>org.projectlombok</groupId>

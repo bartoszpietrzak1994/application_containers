@@ -10,12 +10,12 @@ public class AdminLoginController
     @RequestMapping(value = "/admin/login", method = RequestMethod.GET)
     public String loginForm()
     {
-        return "static/html/admin_index";
+        return "admin_index";
     }
 
     @RequestMapping(value = "/admin/login", method = RequestMethod.POST)
     public String login()
     {
-        return "static/html/welcome";
+        return "welcome";
     }
 }

@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class AccessDeniedController
 {
-    @RequestMapping(value = "/accessDenied", method = RequestMethod.GET)
-    public String registerForm()
+    @RequestMapping(value = "/accessDenied", method = {RequestMethod.GET, RequestMethod.POST})
+    public String accessDenied()
     {
-        return "static/html/access_denied";
+        return "access_denied";
     }
 }

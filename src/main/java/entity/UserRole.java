@@ -13,7 +13,7 @@ public class UserRole
     @Column(name = "role_id")
     private Long id;
 
-    @Column(name = "role_name")
+    @Column(name = "role_name", unique = true)
     private String roleName;
 
     @ManyToMany

@@ -21,7 +21,7 @@ public class RegisterController
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String registerForm()
     {
-        return "static/html/register";
+        return "register";
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
@@ -29,6 +29,6 @@ public class RegisterController
     {
         this.registerer.register(email, password, "ROLE_USER");
 
-        return "static/html/login";
+        return "login";
     }
 }

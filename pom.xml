@@ -131,7 +131,19 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.captcha</groupId>
+            <artifactId>botdetect-jsp20</artifactId>
+            <version>4.0.beta3.5</version>
+        </dependency>
     </dependencies>
 
+    <repositories>
+        <repository>
+            <id>captcha</id>
+            <name>BotDetect Captcha Repository</name>
+            <url>https://git.captcha.com/maven.git/blob_plain/HEAD:/</url>
+        </repository>
+    </repositories>
 
 </project>

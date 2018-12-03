@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/semantic-ui@2.4.0/dist/semantic.min.css">
     <script src="../semantic/dist/semantic.js"></script>
     <script src="../static/resources/dist/jquery/jquery.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
     <body>
         <div class="ui middle aligned center aligned grid">
@@ -29,6 +30,9 @@
                                 <input type="password" th:name="password" placeholder="Password">
                             </div>
                         </div>
+
+                        <div class="g-recaptcha" data-sitekey="6LeshX4UAAAAAPb-xE_GFD80WsYLnUZrHVF38ddf"></div>
+
                         <button class="ui button" type="submit">Register</button>
                     </div>
 

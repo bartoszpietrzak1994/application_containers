@@ -13,19 +13,22 @@ public class User
     @Column(name = "user_id")
     private Long id;
 
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "email", unique = true)
+    @Column(name = "email", unique = true, nullable = false)
     private String email;
 
-    @ManyToMany(cascade = { CascadeType.ALL })
+    @ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
     @JoinTable(
             name = "user_user_roles",
             joinColumns = { @JoinColumn(name = "user_id") },
             inverseJoinColumns = { @JoinColumn(name = "role_id") }
     )
     private Set<UserRole> userRoles = new HashSet<>();
+
+    @Column(name = "enabled", nullable = false)
+    private boolean enabled;
 
     public Long getId()
     {
@@ -60,5 +63,20 @@ public class User
     public Set<UserRole> getUserRoles()
     {
         return userRoles;
+    }
+
+    public boolean isEnabled()
+    {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled)
+    {
+        this.enabled = enabled;
+    }
+
+    public void addUserRole(UserRole userRole)
+    {
+        this.userRoles.add(userRole);
     }
 }

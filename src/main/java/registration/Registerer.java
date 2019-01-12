@@ -6,10 +6,10 @@ import main.java.repository.UserRepository;
 import main.java.repository.UserRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Component
+@Service
 public class Registerer
 {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -28,15 +28,18 @@ public class Registerer
     }
 
     @Transactional
-    public void register(String email, String password, String roleName)
+    public User register(String email, String password, String roleName)
     {
         User user = new User();
 
-        user.setEmail(email);
+        user.setEmail(email.trim());
         user.setPassword(this.hashPassword(password));
-        user.getUserRoles().add(this.fetchUserRole(roleName));
+        user.addUserRole(this.fetchUserRole(roleName));
+        user.setEnabled(false);
 
         userRepository.saveAndFlush(user);
+
+        return user;
     }
 
     private String hashPassword(String password)

@@ -8,26 +8,20 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.support.ResourceBundleMessageSource;
-import org.springframework.http.MediaType;
-import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.core.Ordered;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.LocaleResolver;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 
-import java.util.List;
+import java.util.Locale;
 import java.util.Properties;
 
 @Configuration
@@ -43,7 +37,7 @@ import java.util.Properties;
         "main.java.generator"
 })
 @Import({SecurityConfiguration.class, DatabaseConfig.class})
-public class WebConfig implements WebMvcConfigurer
+public class WebConfig extends WebMvcConfigurerAdapter implements WebMvcConfigurer
 {
     private ApplicationContext applicationContext;
     private DaoUserDetailsService userDetailsService;
@@ -59,7 +53,7 @@ public class WebConfig implements WebMvcConfigurer
     public ResourceBundleMessageSource messageSource()
     {
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-        messageSource.setBasename("classpath:i18n/");
+        messageSource.setBasename("messages");
         messageSource.setDefaultEncoding("UTF-8");
         messageSource.setUseCodeAsDefaultMessage(true);
         return messageSource;
@@ -68,14 +62,24 @@ public class WebConfig implements WebMvcConfigurer
     @Bean
     public LocaleResolver localeResolver()
     {
-        return new CookieLocaleResolver();
+        CookieLocaleResolver cookieLocaleResolver = new CookieLocaleResolver();
+        cookieLocaleResolver.setDefaultLocale(Locale.ENGLISH);
+
+        return cookieLocaleResolver;
     }
 
+    @Override
     public void addInterceptors(InterceptorRegistry registry)
+    {
+        registry.addInterceptor(localeChangeInterceptor());
+    }
+
+    @Bean
+    public LocaleChangeInterceptor localeChangeInterceptor()
     {
         LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
         localeChangeInterceptor.setParamName("lang");
-        registry.addInterceptor(localeChangeInterceptor);
+        return localeChangeInterceptor;
     }
 
     @Bean

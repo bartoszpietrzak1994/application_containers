@@ -1,7 +1,7 @@
 package main.java.registration;
 
-import main.java.entity.User;
-import main.java.entity.UserRole;
+import main.java.entity.user.User;
+import main.java.entity.user.UserRole;
 import main.java.repository.UserRepository;
 import main.java.repository.UserRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;

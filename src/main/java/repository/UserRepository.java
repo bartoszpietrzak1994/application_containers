@@ -1,6 +1,6 @@
 package main.java.repository;
 
-import main.java.entity.User;
+import main.java.entity.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

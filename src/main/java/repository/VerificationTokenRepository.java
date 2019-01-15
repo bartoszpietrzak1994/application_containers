@@ -1,6 +1,6 @@
 package main.java.repository;
 
-import main.java.entity.VerificationToken;
+import main.java.entity.user.VerificationToken;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

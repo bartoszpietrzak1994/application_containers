@@ -1,4 +1,4 @@
-package main.java.entity;
+package main.java.entity.user;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -33,11 +33,6 @@ public class User
     public Long getId()
     {
         return id;
-    }
-
-    public void setId(Long id)
-    {
-        this.id = id;
     }
 
     public String getPassword()

@@ -1,7 +1,7 @@
 package main.java.controller.auth;
 
-import main.java.entity.User;
-import main.java.entity.VerificationToken;
+import main.java.entity.user.User;
+import main.java.entity.user.VerificationToken;
 import main.java.repository.UserRepository;
 import main.java.repository.VerificationTokenRepository;
 import org.springframework.beans.factory.annotation.Autowired;

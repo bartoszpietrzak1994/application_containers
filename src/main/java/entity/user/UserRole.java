@@ -1,4 +1,4 @@
-package main.java.entity;
+package main.java.entity.user;
 
 import javax.persistence.*;
 import java.util.HashSet;

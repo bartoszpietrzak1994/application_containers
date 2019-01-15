@@ -1,7 +1,7 @@
 package main.java.sender;
 
 import main.java.creator.VerificationTokenCreator;
-import main.java.entity.User;
+import main.java.entity.user.User;
 import main.java.generator.VerificationTokenGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;

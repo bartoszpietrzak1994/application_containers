@@ -1,7 +1,7 @@
-package main.java.model;
+package main.java.model.user;
 
-import main.java.entity.User;
-import main.java.entity.UserRole;
+import main.java.entity.user.User;
+import main.java.entity.user.UserRole;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

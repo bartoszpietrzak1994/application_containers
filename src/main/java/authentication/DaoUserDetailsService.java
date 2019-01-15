@@ -1,7 +1,7 @@
 package main.java.authentication;
 
-import main.java.entity.User;
-import main.java.model.DaoUserDetails;
+import main.java.entity.user.User;
+import main.java.model.user.DaoUserDetails;
 import main.java.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -28,14 +28,14 @@ public class Registerer
     }
 
     @Transactional
-    public User register(String email, String password, String roleName)
+    public User register(String email, String password, String roleName, boolean isEnabled)
     {
         User user = new User();
 
         user.setEmail(email.trim());
         user.setPassword(this.hashPassword(password));
         user.addUserRole(this.fetchUserRole(roleName));
-        user.setEnabled(false);
+        user.setEnabled(isEnabled);
 
         userRepository.saveAndFlush(user);
 

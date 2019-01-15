@@ -36,18 +36,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
     {
         http
         .authorizeRequests()
-        .antMatchers("/welcome").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
-        .antMatchers("/register").permitAll()
+        .antMatchers("/**/admin/**").access("hasRole('ROLE_ADMIN')")
+        .antMatchers("/**/shop/**").permitAll()
+        .antMatchers("/shop/register").permitAll()
         .and()
         .formLogin()
-                .loginPage("/user-login")
+                .loginPage("/shop/login")
                 .permitAll()
                 .loginProcessingUrl("/login")
-                .defaultSuccessUrl("/welcome")
+                .defaultSuccessUrl("/shop/welcome")
                 .failureForwardUrl("/accessDenied")
                 .usernameParameter("email")
-                .passwordParameter("password");
-//        .and()
-//        .exceptionHandling().accessDeniedPage("/accessDenied");
+                .passwordParameter("password")
+        .and()
+        .exceptionHandling().accessDeniedPage("/accessDenied");
     }
 }

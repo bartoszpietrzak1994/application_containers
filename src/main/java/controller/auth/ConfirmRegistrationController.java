@@ -49,6 +49,6 @@ public class ConfirmRegistrationController
 
         this.userRepository.saveAndFlush(user);
 
-        return "login";
+        return "user/login";
     }
 }

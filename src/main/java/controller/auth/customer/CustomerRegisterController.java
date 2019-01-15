@@ -1,4 +1,4 @@
-package main.java.controller.auth;
+package main.java.controller.auth.customer;
 
 import main.java.entity.user.User;
 import main.java.registration.Registerer;
@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class RegisterController
+public class CustomerRegisterController
 {
     private Registerer registerer;
     private VerificationTokenSender verificationTokenSender;
     private ReCaptchaChecker reCaptchaChecker;
 
     @Autowired
-    public RegisterController(
+    public CustomerRegisterController(
             Registerer registerer,
             VerificationTokenSender verificationTokenSender,
             ReCaptchaChecker reCaptchaChecker
@@ -28,13 +28,13 @@ public class RegisterController
         this.reCaptchaChecker = reCaptchaChecker;
     }
 
-    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    @RequestMapping(value = "/shop/register", method = RequestMethod.GET)
     public String registerForm()
     {
-        return "register";
+        return "user/register";
     }
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    @RequestMapping(value = "/shop/register", method = RequestMethod.POST)
     public String register(
             @RequestParam("email") String email,
             @RequestParam("password") String password,
@@ -42,13 +42,13 @@ public class RegisterController
     ) {
         if(!this.reCaptchaChecker.verifyResponse(captchaResponse))
         {
-            return "register";
+            return "user/register";
         }
 
-        User user = this.registerer.register(email, password, "ROLE_USER");
+        User user = this.registerer.register(email, password, "ROLE_USER", false);
 
         verificationTokenSender.generateAndSendTokenForUser(user);
 
-        return "login";
+        return "user/login";
     }
 }

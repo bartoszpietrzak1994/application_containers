@@ -10,12 +10,6 @@ public class AdminLoginController
     @RequestMapping(value = "/admin/login", method = RequestMethod.GET)
     public String loginForm()
     {
-        return "admin_index";
-    }
-
-    @RequestMapping(value = "/admin/login", method = RequestMethod.POST)
-    public String login()
-    {
-        return "welcome";
+        return "admin/login";
     }
 }

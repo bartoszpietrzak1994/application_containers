@@ -1,16 +1,15 @@
-package main.java.controller.customer;
+package main.java.controller.admin;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class IndexController
+public class AdminIndexController
 {
-    @RequestMapping(value = "/welcome", method = { RequestMethod.GET })
+    @RequestMapping(value = "/admin/welcome", method = { RequestMethod.GET })
     public String welcome()
     {
-        return "index";
+        return "user/index";
     }
 }

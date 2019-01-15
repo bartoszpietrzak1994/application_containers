@@ -3,6 +3,7 @@ package main.java.config;
 import main.java.authentication.DaoUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -11,13 +12,14 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter
+@Order(2)
+public class BasicSecurityConfiguration extends WebSecurityConfigurerAdapter
 {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     private DaoUserDetailsService userDetailsService;
 
     @Autowired
-    public SecurityConfiguration(
+    public BasicSecurityConfiguration(
         BCryptPasswordEncoder bCryptPasswordEncoder,
         DaoUserDetailsService userDetailsService
     ) {
@@ -36,9 +38,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
     {
         http
         .authorizeRequests()
-        .antMatchers("/**/admin/**").access("hasRole('ROLE_ADMIN')")
-        .antMatchers("/**/shop/**").permitAll()
         .antMatchers("/shop/register").permitAll()
+        .antMatchers("/shop/**").hasRole("USER")
         .and()
         .formLogin()
                 .loginPage("/shop/login")

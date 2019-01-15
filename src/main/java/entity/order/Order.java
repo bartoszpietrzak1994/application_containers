@@ -21,7 +21,7 @@ public class Order
     @OneToMany
     private List<OrderItem> orderItems;
 
-    @Column(name = "order_number")
+    @Column(name = "order_number", unique = true)
     private String number;
 
     public List<OrderItem> getOrderItems()

@@ -2,8 +2,8 @@ package main.java.registration;
 
 import main.java.entity.user.User;
 import main.java.entity.user.UserRole;
-import main.java.repository.UserRepository;
-import main.java.repository.UserRoleRepository;
+import main.java.repository.user.UserRepository;
+import main.java.repository.user.UserRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

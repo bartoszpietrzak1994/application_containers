@@ -1,4 +1,4 @@
-package main.java.controller.auth.customer;
+package main.java.controller.auth.customer.user;
 
 import main.java.entity.user.User;
 import main.java.registration.Registerer;

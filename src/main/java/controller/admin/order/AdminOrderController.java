@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.stream.Collectors;
 
 @Controller
-public class OrderController
+public class AdminOrderController
 {
     private OrderRepository orderRepository;
 
     @Autowired
-    public OrderController(OrderRepository orderRepository)
+    public AdminOrderController(OrderRepository orderRepository)
     {
         this.orderRepository = orderRepository;
     }

@@ -1,4 +1,4 @@
-package main.java.controller.auth.customer;
+package main.java.controller.auth.customer.user;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

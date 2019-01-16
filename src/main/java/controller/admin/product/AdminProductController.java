@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.stream.Collectors;
 
 @Controller
-public class ProductController
+public class AdminProductController
 {
     private ProductRepository productRepository;
 
     @Autowired
-    public ProductController(ProductRepository productRepository)
+    public AdminProductController(ProductRepository productRepository)
     {
         this.productRepository = productRepository;
     }

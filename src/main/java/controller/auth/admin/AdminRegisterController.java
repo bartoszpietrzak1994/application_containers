@@ -45,9 +45,7 @@ public class AdminRegisterController
             return "admin_register";
         }
 
-        User user = this.registerer.register(email, password, "ROLE_ADMIN", true);
-
-        verificationTokenSender.generateAndSendTokenForUser(user);
+        this.registerer.register(email, password, "ROLE_ADMIN", true);
 
         return "admin/login";
     }

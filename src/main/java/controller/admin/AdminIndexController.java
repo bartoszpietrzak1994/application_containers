@@ -10,6 +10,6 @@ public class AdminIndexController
     @RequestMapping(value = "/admin/welcome", method = { RequestMethod.GET })
     public String welcome()
     {
-        return "user/index";
+        return "admin/index";
     }
 }

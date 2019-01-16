@@ -1,10 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Users index</title>
 </head>
 <body>
-<h1>Users index page</h1>
+<div class="container vertical-center">
+    <h2 class="text-center">Users</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Email</th>
+                    <th scope="col">Enabled</th>
+                    <th scope="col">Role name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.email}">...</td>
+                    <td th:text="${user.enabled}">...</td>
+                    <td th:text="${user.roleName}">...</td>
+                </tr>
+            </tbody>
+        </table>
+</div>
+<style>
+    body {
+        font-size: 14px;
+        line-height: 1.42857143;
+        color: #333;
+        background-color: #fff;
+    }
+    .vertical-center {
+        min-height: 100%;
+        min-height: 100vh;
+
+        display: flex;
+        align-items: center;
+    }
+</style>
 </body>
 </html>

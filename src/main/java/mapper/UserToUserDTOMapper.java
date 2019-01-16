@@ -10,6 +10,8 @@ public class UserToUserDTOMapper
         UserDTO userDTO = new UserDTO();
 
         userDTO.setEmail(user.getEmail());
+        userDTO.setEnabled(user.isEnabled());
+        userDTO.setRoleName(UserRoleToUserRoleDTOMapper.toUserRoleDTO(user.getUserRoles()).getRoleName());
 
         return userDTO;
     }

@@ -6,9 +6,7 @@ import main.java.repository.product.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.stream.Collectors;
 
@@ -35,13 +33,14 @@ public class ProductController
     }
 
     @RequestMapping(value = "/admin/products/add", method = RequestMethod.GET)
-    public String addProductTemplate()
+    public String addProductTemplate(Model model)
     {
+        model.addAttribute("product", new Product());
         return "admin/add_product";
     }
 
     @RequestMapping(value = "/admin/products/add", method = RequestMethod.POST)
-    public String addProduct(@RequestBody Product product)
+    public String addProduct(@ModelAttribute("product") Product product)
     {
         this.productRepository.saveAndFlush(product);
 

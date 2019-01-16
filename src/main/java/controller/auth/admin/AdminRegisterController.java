@@ -1,6 +1,5 @@
 package main.java.controller.auth.admin;
 
-import main.java.entity.user.User;
 import main.java.registration.Registerer;
 import main.java.registration.captcha.ReCaptchaChecker;
 import main.java.sender.VerificationTokenSender;

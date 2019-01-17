@@ -35,8 +35,10 @@ public class CustomerOrderController
     }
 
     @RequestMapping(value = "/shop/orders/place", method = RequestMethod.POST)
-    public String makeOrder(@ModelAttribute("order") Order order)
+    public String placeOrder(@ModelAttribute("order") Order order)
     {
+        order.setUser(userRepository.findUserByEmail(getCurrentlyLoggedInUserEmail()));
+
         orderRepository.saveAndFlush(order);
 
         return "user/index";

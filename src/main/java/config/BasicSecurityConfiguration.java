@@ -38,6 +38,7 @@ public class BasicSecurityConfiguration extends WebSecurityConfigurerAdapter
     {
         http
         .authorizeRequests()
+        .antMatchers("/resources/**").permitAll().anyRequest().permitAll()
         .antMatchers("/shop/register").permitAll()
         .antMatchers("/shop/**").hasRole("USER")
         .and()

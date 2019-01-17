@@ -1,0 +1,31 @@
+body {
+    background-image: url("https://previews.123rf.com/images/rrvachov/rrvachov1701/rrvachov170100018/70930323-spectators-in-the-large-concert-hall-.jpg");
+    background-size: 100%;
+    color: white;
+    font-size: 30px;
+}
+.vertical-center {
+    min-height: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+}
+.login-form {
+    width: 340px;
+    margin: 50px auto;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.btn-primary {
+    margin-bottom: 15px;
+}
+.add-product-form {
+    width: 340px;
+    margin: 50px auto;
+}
+#access_denied {
+    display: block;
+    margin: auto;
+}

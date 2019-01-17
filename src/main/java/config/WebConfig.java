@@ -97,6 +97,12 @@ public class WebConfig extends WebMvcConfigurerAdapter implements WebMvcConfigur
         return templateResolver;
     }
 
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry)
+    {
+        registry.addResourceHandler("**").addResourceLocations("/resources/");
+    }
+
     @Bean
     public SpringTemplateEngine templateEngine()
     {

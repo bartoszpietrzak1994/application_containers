@@ -2,7 +2,7 @@ package main.java.sender;
 
 import main.java.creator.VerificationTokenCreator;
 import main.java.entity.user.User;
-import main.java.generator.VerificationTokenGenerator;
+import main.java.generator.UUIDGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -15,13 +15,13 @@ public class VerificationTokenSender
 
     private VerificationTokenCreator verificationTokenCreator;
     private JavaMailSender mailSender;
-    private VerificationTokenGenerator verificationTokenGenerator;
+    private UUIDGenerator verificationTokenGenerator;
 
     @Autowired
     public VerificationTokenSender(
             VerificationTokenCreator verificationTokenCreator,
             JavaMailSender mailSender,
-            VerificationTokenGenerator verificationTokenGenerator
+            UUIDGenerator verificationTokenGenerator
     ) {
         this.verificationTokenCreator = verificationTokenCreator;
         this.mailSender = mailSender;

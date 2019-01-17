@@ -8,6 +8,15 @@
 </head>
 <body>
     <div class="container vertical-center">
+        <form action="/logout" method="post">
+            <input
+                    type="hidden"
+                    th:name="${_csrf.parameterName}"
+                    th:value="${_csrf.token}"
+            />
+
+            <button id="logout" type="submit" class="btn btn-primary btn-block">Logout</button>
+        </form>
         <h1>Admin index</h1>
         <div class="text-center">
             <a href="/admin/users/all">Users index</a>

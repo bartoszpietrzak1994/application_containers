@@ -7,6 +7,20 @@
     <link rel="stylesheet" th:href="@{/css/main.css}" href="../../../resources/css/main.css"/>
 </head>
 <body>
-<h1>Orders index</h1>
+<body>
+    <div class="container vertical-center">
+        <form action="/logout" method="post">
+            <input
+                    type="hidden"
+                    th:name="${_csrf.parameterName}"
+                    th:value="${_csrf.token}"
+            />
+
+            <button id="logout" type="submit" class="btn btn-primary btn-block">Logout</button>
+        </form>
+
+        <h2>Orders index</h2>
+    </div>
+</body>
 </body>
 </html>

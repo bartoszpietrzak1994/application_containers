@@ -11,7 +11,6 @@ public class OrderItemToOrderItemDTOMapper
 
         orderItemDTO.setOrder(OrderToOrderDTOMapper.toOrderDTO(orderItem.getOrder()));
         orderItemDTO.setProduct(ProductToProductDTOMapper.toProductDTO(orderItem.getProduct()));
-        orderItemDTO.setProductQuantity(orderItem.getProductQuantity());
 
         return orderItemDTO;
     }

@@ -21,9 +21,6 @@ public class OrderItem
     @JoinColumn(name = "product_id")
     private Product product;
 
-    @Column(name = "product_quantity")
-    private int productQuantity;
-
     public Long getId()
     {
         return id;
@@ -47,15 +44,5 @@ public class OrderItem
     public void setProduct(Product product)
     {
         this.product = product;
-    }
-
-    public int getProductQuantity()
-    {
-        return productQuantity;
-    }
-
-    public void setProductQuantity(int productQuantity)
-    {
-        this.productQuantity = productQuantity;
     }
 }

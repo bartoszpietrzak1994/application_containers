@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import java.util.UUID;
 
 @Component
-public class VerificationTokenGenerator
+public class UUIDGenerator
 {
     public String uuid()
     {

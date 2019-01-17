@@ -6,7 +6,6 @@ public class OrderItemDTO
 {
     private OrderDTO order;
     private ProductDTO product;
-    private int productQuantity;
 
     public OrderDTO getOrder()
     {
@@ -26,15 +25,5 @@ public class OrderItemDTO
     public void setProduct(ProductDTO product)
     {
         this.product = product;
-    }
-
-    public int getProductQuantity()
-    {
-        return productQuantity;
-    }
-
-    public void setProductQuantity(int productQuantity)
-    {
-        this.productQuantity = productQuantity;
     }
 }

@@ -51,6 +51,10 @@ public class BasicSecurityConfiguration extends WebSecurityConfigurerAdapter
                 .usernameParameter("email")
                 .passwordParameter("password")
         .and()
+                .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/admin/login")
+        .and()
         .exceptionHandling().accessDeniedPage("/accessDenied");
     }
 }

@@ -8,6 +8,16 @@
 </head>
 <body>
     <div class="container vertical-center">
+        <form action="/logout" method="post">
+            <input
+                    type="hidden"
+                    th:name="${_csrf.parameterName}"
+                    th:value="${_csrf.token}"
+            />
+
+            <button id="logout" type="submit" class="btn btn-primary btn-block">Logout</button>
+        </form>
+
         <h2 class="text-center">Users</h2>
         <div class="container vertical-center">
             <table class="table table-striped">

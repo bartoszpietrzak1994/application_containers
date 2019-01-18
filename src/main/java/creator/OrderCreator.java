@@ -32,10 +32,18 @@ public class OrderCreator
     {
         Product product = productRepository.findFirstByName(productName);
 
+        if (product == null)
+        {
+            return;
+        }
+
         OrderItem orderItem = new OrderItem();
         orderItem.setProduct(product);
 
         Order order = new Order();
+
+        orderItem.setOrder(order);
+
         order.setUser(user);
         order.getOrderItems().add(orderItem);
         order.setNumber(uuidGenerator.uuid());

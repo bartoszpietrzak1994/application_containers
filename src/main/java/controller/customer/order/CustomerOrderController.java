@@ -44,12 +44,12 @@ public class CustomerOrderController
     public String placeOrder(@RequestBody String productName)
     {
         User user = userRepository.findUserByEmail(currentUserProvider.getCurrentlyLoggedUsersEmail());
-        orderCreator.placeOrder(productName.split("")[1], user);
+        orderCreator.placeOrder(productName.split("=")[1], user);
 
         return "user/index";
     }
 
-    @RequestMapping(value = "/shop/orders/{orderNumber}/details", method = RequestMethod.GET)
+    @RequestMapping(value = "/shop/orders/number/{orderNumber}/details", method = RequestMethod.GET)
     public String orderDetails(@PathVariable String orderNumber, Model model)
     {
         String currentlyLoggedUsersEmail = getCurrentlyLoggedInUserEmail();

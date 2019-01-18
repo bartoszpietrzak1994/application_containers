@@ -4,6 +4,7 @@ import main.java.entity.order.Order;
 import main.java.entity.order.OrderItem;
 import main.java.model.order.OrderDTO;
 
+import java.util.Date;
 import java.util.stream.Collectors;
 
 public class OrderToOrderDTOMapper
@@ -13,10 +14,9 @@ public class OrderToOrderDTOMapper
         OrderDTO orderDTO = new OrderDTO();
 
         orderDTO.setNumber(order.getNumber());
-        orderDTO.setUserDTO(UserToUserDTOMapper.toUserDTO(order.getUser()));
-        orderDTO.setOrderItems(order.getOrderItems().stream().map(
-                OrderItemToOrderItemDTOMapper::toOrderItemDTO).collect(Collectors.toList())
-        );
+        orderDTO.setUserEmail(order.getUser().getEmail());
+        orderDTO.setDate(new Date(order.getOrderItems().iterator().next().getProduct().getDate().getTime()));
+        orderDTO.setProductName(order.getOrderItems().iterator().next().getProduct().getName());
 
         double total = 0;
 

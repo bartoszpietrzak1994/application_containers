@@ -8,8 +8,6 @@ public class OrderItemToOrderItemDTOMapper
     public static OrderItemDTO toOrderItemDTO(OrderItem orderItem)
     {
         OrderItemDTO orderItemDTO = new OrderItemDTO();
-
-        orderItemDTO.setOrder(OrderToOrderDTOMapper.toOrderDTO(orderItem.getOrder()));
         orderItemDTO.setProduct(ProductToProductDTOMapper.toProductDTO(orderItem.getProduct()));
 
         return orderItemDTO;

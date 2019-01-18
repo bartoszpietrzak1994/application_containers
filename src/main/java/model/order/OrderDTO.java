@@ -1,27 +1,23 @@
 package main.java.model.order;
 
-import main.java.model.user.UserDTO;
-
-import java.util.List;
+import java.util.Date;
 
 public class OrderDTO
 {
-    private List<OrderItemDTO> orderItems;
-
     private String number;
-
-    private UserDTO userDTO;
-
+    private String userEmail;
+    private String productName;
     private double total;
+    private Date date;
 
-    public List<OrderItemDTO> getOrderItems()
+    public String getUserEmail()
     {
-        return orderItems;
+        return userEmail;
     }
 
-    public void setOrderItems(List<OrderItemDTO> orderItems)
+    public void setUserEmail(String userEmail)
     {
-        this.orderItems = orderItems;
+        this.userEmail = userEmail;
     }
 
     public String getNumber()
@@ -34,16 +30,6 @@ public class OrderDTO
         this.number = number;
     }
 
-    public UserDTO getUserDTO()
-    {
-        return userDTO;
-    }
-
-    public void setUserDTO(UserDTO userDTO)
-    {
-        this.userDTO = userDTO;
-    }
-
     public double getTotal()
     {
         return total;
@@ -52,5 +38,25 @@ public class OrderDTO
     public void setTotal(double total)
     {
         this.total = total;
+    }
+
+    public String getProductName()
+    {
+        return productName;
+    }
+
+    public void setProductName(String productName)
+    {
+        this.productName = productName;
+    }
+
+    public Date getDate()
+    {
+        return date;
+    }
+
+    public void setDate(Date date)
+    {
+        this.date = date;
     }
 }

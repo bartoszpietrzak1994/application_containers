@@ -36,7 +36,7 @@ import java.util.Properties;
         "main.java.generator",
         "main.java.provider"
 })
-@Import({AdminSecurityConfiguration.class, BasicSecurityConfiguration.class, DatabaseConfig.class})
+@Import({SecurityConfiguration.class, DatabaseConfig.class})
 public class WebConfig extends WebMvcConfigurerAdapter implements WebMvcConfigurer
 {
     private ApplicationContext applicationContext;

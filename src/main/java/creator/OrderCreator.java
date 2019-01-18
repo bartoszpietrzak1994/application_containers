@@ -5,7 +5,6 @@ import main.java.entity.order.OrderItem;
 import main.java.entity.product.Product;
 import main.java.entity.user.User;
 import main.java.generator.UUIDGenerator;
-import main.java.model.product.ProductDTO;
 import main.java.repository.order.OrderRepository;
 import main.java.repository.product.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,9 +28,9 @@ public class OrderCreator
         this.uuidGenerator = uuidGenerator;
     }
 
-    public void placeOrder(ProductDTO productDTO, User user)
+    public void placeOrder(String productName, User user)
     {
-        Product product = productRepository.findFirstByName(productDTO.getName());
+        Product product = productRepository.findFirstByName(productName);
 
         OrderItem orderItem = new OrderItem();
         orderItem.setProduct(product);

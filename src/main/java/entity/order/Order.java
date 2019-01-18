@@ -3,6 +3,7 @@ package main.java.entity.order;
 import main.java.entity.user.User;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -18,16 +19,11 @@ public class Order
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany
-    private List<OrderItem> orderItems;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<OrderItem> orderItems = new ArrayList<>();
 
     @Column(name = "order_number", unique = true)
     private String number;
-
-    public List<OrderItem> getOrderItems()
-    {
-        return orderItems;
-    }
 
     public Long getId()
     {
@@ -47,6 +43,11 @@ public class Order
     public void setOrderItems(List<OrderItem> orderItems)
     {
         this.orderItems = orderItems;
+    }
+
+    public List<OrderItem> getOrderItems()
+    {
+        return orderItems;
     }
 
     public String getNumber()

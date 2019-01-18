@@ -2,14 +2,11 @@ package main.java.controller.customer.order;
 
 import main.java.creator.OrderCreator;
 import main.java.entity.order.Order;
-import main.java.entity.order.OrderItem;
-import main.java.entity.product.Product;
 import main.java.entity.user.User;
 import main.java.mapper.OrderToOrderDTOMapper;
 import main.java.model.product.ProductDTO;
 import main.java.provider.CurrentUserProvider;
 import main.java.repository.order.OrderRepository;
-import main.java.repository.product.ProductRepository;
 import main.java.repository.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -43,10 +40,10 @@ public class CustomerOrderController
     }
 
     @RequestMapping(value = "/shop/orders/place", method = RequestMethod.POST)
-    public String placeOrder(@RequestBody ProductDTO productDTO)
+    public String placeOrder(@RequestBody String productName)
     {
         User user = userRepository.findUserByEmail(currentUserProvider.getCurrentlyLoggedUsersEmail());
-        orderCreator.placeOrder(productDTO, user);
+        orderCreator.placeOrder(productName.split("")[1], user);
 
         return "user/index";
     }
@@ -73,7 +70,7 @@ public class CustomerOrderController
         return "user/order_details";
     }
 
-    @RequestMapping(value = "/shop/orders/", method = RequestMethod.GET)
+    @RequestMapping(value = "/shop/orders/all", method = RequestMethod.GET)
     public String getUsersOrders(Model model)
     {
         String currentlyLoggedUsersEmail = getCurrentlyLoggedInUserEmail();

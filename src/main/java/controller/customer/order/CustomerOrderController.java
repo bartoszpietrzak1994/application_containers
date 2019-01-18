@@ -1,11 +1,9 @@
 package main.java.controller.customer.order;
 
-import com.itextpdf.text.DocumentException;
 import main.java.creator.OrderCreator;
 import main.java.entity.order.Order;
 import main.java.entity.user.User;
 import main.java.mapper.OrderToOrderDTOMapper;
-import main.java.model.product.ProductDTO;
 import main.java.provider.CurrentUserProvider;
 import main.java.repository.order.OrderRepository;
 import main.java.repository.user.UserRepository;
@@ -17,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -60,7 +57,7 @@ public class CustomerOrderController
 
         model.addAttribute("isSuccessful", isSuccessful);
 
-        return "user/index";
+        return "user/orders";
     }
 
     @RequestMapping(value = "/shop/orders/number/{orderNumber}/details", method = RequestMethod.GET)

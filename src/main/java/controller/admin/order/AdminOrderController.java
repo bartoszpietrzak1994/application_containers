@@ -5,6 +5,7 @@ import main.java.repository.order.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -32,12 +33,12 @@ public class AdminOrderController
         return "admin/orders";
     }
 
-    @RequestMapping(value = "/admin/orders/id/{id}")
-    public String getOrderDetails(Model model, String orderId)
+    @RequestMapping(value = "/admin/orders/number/{orderNumber}/details")
+    public String getOrderDetails(Model model, @PathVariable  String orderNumber)
     {
         model.addAttribute(
                 "order",
-                OrderToOrderDTOMapper.toOrderDTO(this.orderRepository.getOne(Long.valueOf(orderId)))
+                OrderToOrderDTOMapper.toOrderDTO(this.orderRepository.findOrderByNumber(orderNumber))
         );
 
         return "admin/order_details";

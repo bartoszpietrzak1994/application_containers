@@ -17,10 +17,29 @@
         <button type="submit" class="btn btn-primary btn-block logout">Logout</button>
     </form>
 
-    <h2>Order details</h2>
+    <h2 class="text-center">Order details</h2>
 
     <div class="container vertical-center">
-
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Number</th>
+                <th scope="col">User</th>
+                <th scope="col">Total</th>
+                <th scope="col">Event</th>
+                <th scope="col">Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td th:text="${order.number}">...</td>
+                <td th:text="${order.userEmail}">...</td>
+                <td th:text="${order.total}">...</td>
+                <td th:text="${order.productName}">...</td>
+                <td th:text="${order.date}">...</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </body>
 </html>

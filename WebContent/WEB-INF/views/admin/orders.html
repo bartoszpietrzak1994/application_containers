@@ -17,9 +17,31 @@
         <button type="submit" class="btn btn-primary btn-block logout">Logout</button>
     </form>
 
-    <h2>Orders index</h2>
+    <h2 class="text-center">Orders index</h2>
 
     <div class="container vertical-center">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Number</th>
+                <th scope="col">User</th>
+                <th scope="col">Total</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="order : ${orders}">
+                <td th:text="${order.number}">...</td>
+                <td th:text="${order.userEmail}">...</td>
+                <td th:text="${order.total}">...</td>
+                <td>
+                    <a th:href="@{/admin/orders/number/{orderNumber}/details(orderNumber=${order.number})}"
+                       class="btn btn-primary btn-block">Details
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </body>
 </html>

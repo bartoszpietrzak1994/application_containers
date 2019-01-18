@@ -29,6 +29,6 @@ public class CustomerProductController
                 productRepository.findAll().stream().map(ProductToProductDTOMapper::toProductDTO).collect(Collectors.toList()))
         ;
 
-        return "user/products";
+        return "redirect:user/products";
     }
 }

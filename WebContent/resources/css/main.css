@@ -27,9 +27,15 @@ html, body {    height: 100%;    }
     width: 340px;
     margin: 50px auto;
 }
+.admin-controls {
+    width: 340px;
+    margin: 50px auto;
+}
 #access_denied {
     display: block;
     margin: auto;
+    width: 200px;
+    height: 120px;
 }
 .logout {
     padding: 30px;

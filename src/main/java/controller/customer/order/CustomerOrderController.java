@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class CustomerOrderController
@@ -79,7 +80,9 @@ public class CustomerOrderController
 
         List<Order> ordersByUser = orderRepository.findOrdersByUser(userByEmail);
 
-        model.addAttribute("orders", ordersByUser);
+        model.addAttribute("orders",
+                ordersByUser.stream().map(OrderToOrderDTOMapper::toOrderDTO).collect(Collectors.toList())
+        );
 
         return "user/orders";
     }

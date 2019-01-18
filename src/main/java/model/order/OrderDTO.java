@@ -12,6 +12,8 @@ public class OrderDTO
 
     private UserDTO userDTO;
 
+    private double total;
+
     public List<OrderItemDTO> getOrderItems()
     {
         return orderItems;
@@ -40,5 +42,15 @@ public class OrderDTO
     public void setUserDTO(UserDTO userDTO)
     {
         this.userDTO = userDTO;
+    }
+
+    public double getTotal()
+    {
+        return total;
+    }
+
+    public void setTotal(double total)
+    {
+        this.total = total;
     }
 }

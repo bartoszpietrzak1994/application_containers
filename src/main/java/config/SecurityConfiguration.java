@@ -5,6 +5,7 @@ import main.java.authentication.TicketAppAuthenticationSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -44,13 +45,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
     {
         http
         .authorizeRequests()
+            .antMatchers("/css/**").permitAll()
             .antMatchers("/shop/register").permitAll()
             .antMatchers("/shop/login").permitAll()
             .antMatchers("/admin/register").permitAll()
             .antMatchers("/logout").permitAll()
-            .antMatchers("/shop/**").authenticated().anyRequest().hasRole("USER")
+            .antMatchers("/shop/**").authenticated().anyRequest().access("hasAnyRole('USER', 'ADMIN')")
             .antMatchers("/admin/**").authenticated().anyRequest().hasRole("ADMIN")
-        .and()
+            .antMatchers(HttpMethod.POST,"/admin/**").hasRole("ADMIN")
+                .and()
         .formLogin()
                 .loginPage("/shop/login")
                 .permitAll()

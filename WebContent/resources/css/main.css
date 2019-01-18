@@ -66,3 +66,6 @@ html, body {    height: 100%;    }
 .rTableBody {
     display: table-row-group;
 }
+.validation-error {
+    display: none;
+}

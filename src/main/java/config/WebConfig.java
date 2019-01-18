@@ -12,6 +12,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
@@ -140,6 +141,12 @@ public class WebConfig extends WebMvcConfigurerAdapter implements WebMvcConfigur
         sender.setJavaMailProperties(mailProps);
 
         return sender;
+    }
+
+    @Bean
+    public LocalValidatorFactoryBean localValidatorFactoryBean()
+    {
+        return new LocalValidatorFactoryBean();
     }
 
     public void configureViewResolvers(ViewResolverRegistry registry)

@@ -1,5 +1,6 @@
 package main.java.controller.customer.order;
 
+import com.itextpdf.text.DocumentException;
 import main.java.creator.OrderCreator;
 import main.java.entity.order.Order;
 import main.java.entity.user.User;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,10 +43,22 @@ public class CustomerOrderController
     }
 
     @RequestMapping(value = "/shop/orders/place", method = RequestMethod.POST)
-    public String placeOrder(@RequestBody String productName)
+    public String placeOrder(Model model, @RequestBody String productName)
     {
         User user = userRepository.findUserByEmail(currentUserProvider.getCurrentlyLoggedUsersEmail());
-        orderCreator.placeOrder(productName.split("=")[1], user);
+
+        boolean isSuccessful = true;
+
+        try
+        {
+            orderCreator.placeOrder(productName.split("=")[1], user);
+        }
+        catch (Exception exception)
+        {
+            isSuccessful = false;
+        }
+
+        model.addAttribute("isSuccessful", isSuccessful);
 
         return "user/index";
     }

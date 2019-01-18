@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>User index</title>
+    <title th:text="#{ui.user_index}"></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" th:href="@{/css/main.css}" href="../../../resources/css/main.css"/>
 </head>
@@ -17,9 +17,9 @@
         <button type="submit" class="btn btn-primary btn-block logout" th:text="#{ui.logout}"></button>
     </form>
 
-    <a th:href="@{/shop/welcome(lang=en)}"><img class="i18n" src="https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/510px-Flag_of_the_United_Kingdom.svg.png"></a>
-    <a th:href="@{/shop/welcome(lang=de)}"><img class="i18n" src="https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/510px-Flag_of_Germany.svg.png"></a>
-    <a th:href="@{/shop/welcome(lang=fr)}"><img class="i18n" src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/500px-Flag_of_France.svg.png"></a>
+    <a th:href="@{${#httpServletRequest.requestURI}(lang=en)}"><img class="i18n" src="https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/510px-Flag_of_the_United_Kingdom.svg.png"></a>
+    <a th:href="@{${#httpServletRequest.requestURI}(lang=de)}"><img class="i18n" src="https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/510px-Flag_of_Germany.svg.png"></a>
+    <a th:href="@{${#httpServletRequest.requestURI}(lang=fr)}"><img class="i18n" src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/500px-Flag_of_France.svg.png"></a>
 
     <h2 class="text-center" th:text="#{ui.user_index}"></h2>
 

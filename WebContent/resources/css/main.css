@@ -69,3 +69,7 @@ html, body {    height: 100%;    }
 .validation-error {
     display: none;
 }
+.i18n {
+    width: 125px;
+    height: 60px;
+}

@@ -3,7 +3,7 @@ package main.java.model.product;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.validation.constraints.Future;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
@@ -14,11 +14,11 @@ public class ProductDTO
     private String name;
 
     @NotNull(message = "Event price cannot be empty")
+    @Min(value = 0, message = "Price has to be a positive number")
     private double price;
 
     @NotNull(message = "Event date cannot be empty")
     @DateTimeFormat(pattern = "dd/MM/yyyy")
-    @Future(message = "Event must take place in the future")
     private Date date;
 
     public String getName()

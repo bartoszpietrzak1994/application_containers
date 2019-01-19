@@ -57,7 +57,7 @@ public class CustomerOrderController
 
         model.addAttribute("isSuccessful", isSuccessful);
 
-        return "user/orders";
+        return "redirect:/shop/orders/all";
     }
 
     @RequestMapping(value = "/shop/orders/number/{orderNumber}/details", method = RequestMethod.GET)

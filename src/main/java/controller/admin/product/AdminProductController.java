@@ -1,6 +1,6 @@
 package main.java.controller.admin.product;
 
-import main.java.entity.product.Product;
+import main.java.creator.ProductCreator;
 import main.java.mapper.ProductToProductDTOMapper;
 import main.java.model.product.ProductDTO;
 import main.java.repository.product.ProductRepository;
@@ -23,18 +23,20 @@ import java.util.stream.Collectors;
 public class AdminProductController
 {
     private ProductRepository productRepository;
+    private ProductCreator productCreator;
 
     @Autowired
-    public AdminProductController(ProductRepository productRepository)
+    public AdminProductController(ProductRepository productRepository, ProductCreator productCreator)
     {
         this.productRepository = productRepository;
+        this.productCreator = productCreator;
     }
 
     @InitBinder
     public void initBinder(WebDataBinder binder)
     {
         binder.registerCustomEditor(Date.class,
-                new CustomDateEditor(new SimpleDateFormat("dd/MM/yyyy"), true, 10));
+                new CustomDateEditor(new SimpleDateFormat("dd-MM-yyyy"), true, 10));
     }
 
     @RequestMapping(value = "/admin/products/all", method = RequestMethod.GET)
@@ -72,13 +74,8 @@ public class AdminProductController
 
         model.addAttribute("isSuccessful", true);
 
-        Product product = new Product();
-        product.setName(productDTO.getName());
-        product.setPrice(productDTO.getPrice());
-        product.setDate(new java.sql.Date(productDTO.getDate().getTime()));
+        this.productRepository.saveAndFlush(this.productCreator.fromProductDTO(productDTO));
 
-        this.productRepository.saveAndFlush(product);
-
-        return "admin/products";
+        return "redirect:/admin/products/all";
     }
 }

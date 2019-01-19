@@ -7,14 +7,13 @@
     <link rel="stylesheet" th:href="@{/css/main.css}" href="../../../resources/css/main.css"/>
 </head>
 <body>
-<div class="container vertical-center">
     <a th:href="@{${#httpServletRequest.requestURI}(lang=en)}"><img class="i18n" src="https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/510px-Flag_of_the_United_Kingdom.svg.png"></a>
     <a th:href="@{${#httpServletRequest.requestURI}(lang=de)}"><img class="i18n" src="https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/510px-Flag_of_Germany.svg.png"></a>
     <a th:href="@{${#httpServletRequest.requestURI}(lang=fr)}"><img class="i18n" src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/500px-Flag_of_France.svg.png"></a>
 
-    <a href="/shop/login" class="btn btn-primary btn-block logout" th:text="#{ui.back}"></a>
-    <img id="access_denied" src="https://previews.123rf.com/images/asiln/asiln1408/asiln140800037/30823194-access-denied-stamp.jpg">
-</div>
-
+    <div class="container vertical-center">
+        <a href="/shop/login" class="btn btn-primary btn-block logout" th:text="#{ui.back}"></a>
+        <img id="access_denied" src="https://previews.123rf.com/images/asiln/asiln1408/asiln140800037/30823194-access-denied-stamp.jpg">
+    </div>
 </body>
 </html>

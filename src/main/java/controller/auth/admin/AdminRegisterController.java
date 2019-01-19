@@ -46,6 +46,6 @@ public class AdminRegisterController
 
         this.registerer.register(email, password, "ROLE_ADMIN", true);
 
-        return "admin/login";
+        return "shop/login";
     }
 }

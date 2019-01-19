@@ -50,7 +50,7 @@ public class WebConfig extends WebMvcConfigurerAdapter implements WebMvcConfigur
         this.userDetailsService = userDetailsService;
     }
 
-    @Bean("messageSource")
+    @Bean
     public ResourceBundleMessageSource messageSource()
     {
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
